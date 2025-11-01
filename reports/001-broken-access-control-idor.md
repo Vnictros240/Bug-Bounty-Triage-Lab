@@ -128,7 +128,7 @@ Is POST /api/users/{id}/some-action vulnerable?
 Is DELETE /api/users/{id} vulnerable?
 
 An IDOR that allows an account takeover is almost always a Critical severity, even if no PII is "leaked" in the process.
-```
+```markdown
 2.  **What kind of user is the attacker?** The report says "any authenticated user." We must verify this. Use the lowest-privilege test account you have. If the researcher used an *admin* account to view another user, that might be expected behavior. Always test "horizontal" privilege (user-to-user), not just "vertical" (user-to-admin).
 3.  **Is the identifier guessable?** The researcher used integer IDs (`1001`, `1002`). This is a "classic" IDOR. If the ID was a non-guessable UUIDv4 (e.g., `a1b2c3d4-e5f6-4a7b-8c9d-1e2f3a4b5c6d`), the severity would be much lower, as an attacker couldn't enumerate users. This report is for a *guessable* integer, which is why it's so dangerous.
 
